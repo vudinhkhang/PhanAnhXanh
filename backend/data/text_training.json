@@ -1,0 +1,29 @@
+{
+  "waste": [
+    "Người ta ném bao bì và hộp xốp dọc mé chợ", "Túi rác vứt la liệt dưới chân cầu bộ hành", "Cả tuần xe thu gom không tới, rác tràn ra ngõ", "Có người đem nệm cũ vứt ở bãi đất trống", "Mấy bao thức ăn thừa nằm ngay trước cổng trường", "Đổ trộm xà bần ở cuối đường, gạch vụn chất cao", "Bãi tập kết rác tự phát sát khu nhà ở", "Rac tran khoi thung cong cong qua dem", "Vỏ trái cây và đồ nhựa vứt thành đống cạnh chợ", "Rác sinh hoạt bị bỏ bừa bãi ở đầu ngõ", "Bãi phế liệu vương vãi miếng nhựa và lon nước", "Xe ba gác đổ gạch vỡ lên lề đường", "Đống bao ni lông hôi thối chưa ai dọn", "Người bán hàng bỏ rác sau khi dọn sạp"
+  ],
+  "water": [
+    "Mặt rạch chuyển sang màu tím sau mỗi đợt xả", "Có đường ống đổ dung dịch đục vào dòng kênh", "Nước ao bỗng nổi bọt và nhiều con cá lật bụng", "Nước từ xưởng giặt chảy thẳng xuống suối", "Kênh có màu xanh đậm khác thường và cá nổi lên", "Giếng sinh hoạt có nước nâu cùng cặn đen", "Mui hoi tu nuoc rach va vang bot day tren mat kenh", "Hồ cá đổi màu sau khi cống bên xưởng mở", "Dòng nước thải đục trắng chảy vào mương", "Nước ở vòi có màu vàng và mùi cống", "Từ miệng ống ở bờ sông chảy ra nước đen", "Mặt kênh có màng trắng nhầy sau giờ sản xuất", "Chất thải lỏng chảy vào ao làng", "Nhiều cá chết nổi dọc hai mé sông"
+  ],
+  "dust": [
+    "Công trình phá dỡ làm bụi bám trắng cửa sổ", "Bụi xi măng từ công trường bay sang trường học", "Ống xả trên mái xưởng phun khói đen hàng giờ", "Xe tải chở đất không che bạt cuốn bụi mù đường", "Khoi tu bep than cua quan len day vao nha", "Một lò than xả khói liên tục về phía khu trọ", "Phun cát đánh rỉ làm bụi bay khắp hẻm", "Khói do đốt lá khô làm cả xóm cay mắt", "Bụi bột đá phát tán khi cắt gạch ngoài vỉa hè", "Có người đốt dây điện ngoài trời, mùi khói rất gắt", "Rác bị đem đốt cuối hẻm nên khói tràn vào phòng", "Bụi phủ lên lá và nhà dân từ trạm trộn bê tông", "Thấy màn bụi kéo dài sau mỗi chuyến xe ben", "Đường công trình đầy bụi, đi ngang khó nhìn"
+  ],
+  "noise": [
+    "Quán mở loa ngoài trời đến hai giờ sáng", "Tiếng loa kéo vọng cả dãy trọ, trẻ không ngủ được", "Đội thi công khoan tường liên tục sau nửa đêm", "Hát karaoke qua loa công suất lớn làm hàng xóm mất ngủ", "Tieng may nen khi keu am am suot dem", "Tiếng pô xe nổ to lặp đi lặp lại mỗi tối", "Tiếng búa đập kim loại từ xưởng vọng sang nhà", "Chuông báo động kêu về đêm không dứt", "Mở nhạc rền cả vách nhà dân sau giờ nghỉ", "Chủ quán dùng loa phát quảng cáo liên tục rất ồn", "Máy phát điện rung và kêu lớn lúc rạng sáng", "Tiếng đục bê tông kéo dài cả giờ nghỉ trưa", "Dàn âm thanh đám tiệc mở quá to ngoài hẻm", "Xe tái chế mở loa rao inh ỏi ngày nào cũng vậy"
+  ],
+  "flood": [
+    "Nước mưa ngập qua bậc cửa sau cơn dông", "Nắp hố ga bị bịt bởi bùn, nước dâng lên mặt phố", "Cống thoát chậm khiến nước tràn vào nhà", "Sau mỗi đợt triều nước ngập tới yên xe", "Không mưa nhưng thủy triều dâng làm ngập ngõ", "Ho ga nghẹt rac nen nuoc tran qua via he", "Đường trũng đọng ngập vài tiếng sau mưa", "Lối vào khu trọ ngập tới gối, xe không qua được", "Nước trào từ miệng cống vào sân trường", "Rãnh thoát bị lấp khiến cả đoạn đường ngập", "Nắp cống bị tắc, nước mưa không rút", "Lối đi ngập sâu sau mưa và triều lên", "Hẻm ngập sau trận mưa ngắn do cống bít bùn", "Nước đọng qua đêm làm đường đi lại khó khăn"
+  ],
+  "tree": [
+    "Gió làm bật gốc một cây sao ở dải phân cách", "Cành xà cừ mục nứt treo ngay trên ghế đá", "Cây keo nghiêng sát mái nhà, rễ trồi lên", "Chặt trụi hàng cây hai bên lối đi bộ", "Sau trận giông nhánh bàng lớn nằm ngang mặt phố", "Canh cay treo tren cap dien chua ai don", "Cây cổ thụ bị khoanh vỏ sát gốc", "Thân cây mục rỗng có nguy cơ đổ vào xe", "Bồn hoa công viên bị đào phá hết", "Một cành lớn gãy đè lên cổng nhà", "Người ta lấp thảm cỏ công viên để chiếm chỗ đỗ xe", "Cây gãy nằm chắn đường sau cơn mưa", "Thân cây nứt dọc sau khi bị xe đụng", "Cành me tét ngay phía trên lối đi qua trường"
+  ],
+  "hazard": [
+    "Can dung môi bị thủng, hóa chất rỉ xuống lề", "Có người bỏ nhiều kim tiêm đã sử dụng ở bãi xe", "Thùng đựng axit bị đổ, dung dịch đang lan trên nền", "Bình gas xì và có mùi nồng gần kho", "Ac quy cu ro axit ra nen dat", "Phát hiện chai thuốc diệt cỏ bị vỡ ngay cạnh lối đi", "Rác y tế lẫn bông dính máu ở bãi đất trống", "Dầu máy chảy thành vệt dài từ thùng phuy", "Các hộp pin cũ đã phồng nằm ngoài đường", "Xe chở hóa chất làm đổ dung dịch có mùi khét", "Chất tẩy công nghiệp rỉ ra từ can không đậy nắp", "Chỗ tập kết có bóng đèn huỳnh quang vỡ và ắc quy", "Mùi gas phát ra từ đường ống rò rỉ", "Có can thuốc sâu chảy nước và mùi khó chịu"
+  ],
+  "other": [
+    "Đoạn bờ kè bị nứt và đang trượt xuống sông", "Mặt đường sụp xuống thành hố sâu bất ngờ", "Nắp hố ga bị mất tạo lỗ hổng giữa lối đi", "Xe cẩu để dầm sắt chắn hết lối người đi bộ", "Tấm biển quảng cáo gãy nghiêng ra đường", "Ngo hem toi thui vi den cong cong bi hong", "Dây cáp đứt nằm thấp ngang mặt đường", "Có xác mèo chết đang phân hủy trước nhà", "Lan can cầu bộ hành bong rời một đoạn", "Đá tảng lăn chắn lối đi cạnh bờ kè", "Hàng rào công trình đổ nghiêng lấn đường", "Cột đèn công cộng đổ xuống vỉa hè", "Hố sụt xuất hiện ngay trước cổng chợ", "Bờ đất bị sạt kéo theo gạch lát vỉa hè"
+  ],
+  "unclear": [
+    "Xin xem giúp tình hình hôm trước", "Có chuyện ở đầu hẻm", "Tôi muốn phản ánh về khu vực này", "Nhờ gọi lại cho tôi", "Việc này đã xảy ra từ hôm qua", "Tôi gửi tin để thử hệ thống", "Cho tôi xin số điện thoại hỗ trợ", "Không đăng nhập được vào ứng dụng", "Em cần lấy lại mật khẩu", "Hôm nay có lịch họp không", "Ai biết chuyện gì đang xảy ra", "Xem giúp ảnh tôi vừa gửi", "Việc này kéo dài nhiều tháng rồi", "Xin hướng dẫn cách đổi email", "Khu tôi ở mấy hôm nay xảy ra như vậy", "Đây là nội dung thử nghiệm", "Không thấy nút đăng ký tài khoản", "Có người ở đoạn đường đầu chợ", "Vui lòng giải thích lý do hồ sơ chưa xử lý", "Tôi đã đến nơi vào buổi sáng"
+  ]
+}

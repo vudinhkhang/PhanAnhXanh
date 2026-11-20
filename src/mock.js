@@ -165,6 +165,7 @@ function publicReport(r) {
     intake_note,
     intake_photos,
     duplicate_of,
+    contact,
     ...rest
   } = r;
   rest.resolved_at =
@@ -585,6 +586,8 @@ export async function mock(path, method, data) {
       ai_source: "clip",
       confirmed_group: null,
       priority: "normal",
+      pin: data.pin || null,
+      contact: data.contact ? String(data.contact).trim() : null,
       ward: data.pin ? "Phường Chợ Quán, Thành phố Hồ Chí Minh" : null,
       history: [],
       assignee: null,

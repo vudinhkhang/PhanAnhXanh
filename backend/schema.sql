@@ -28,6 +28,7 @@ ALTER TABLE reports ADD COLUMN IF NOT EXISTS intake_note text;
 ALTER TABLE reports ADD COLUMN IF NOT EXISTS intake_photos integer[] NOT NULL DEFAULT '{}';
 ALTER TABLE reports ADD COLUMN IF NOT EXISTS duplicate_of text REFERENCES reports(id);
 ALTER TABLE reports ADD COLUMN IF NOT EXISTS guest_receipt text;
+ALTER TABLE reports ADD COLUMN IF NOT EXISTS contact text;
 CREATE TABLE IF NOT EXISTS submission_quota (
  source text PRIMARY KEY, attempts integer NOT NULL, expires_at timestamptz NOT NULL
 );

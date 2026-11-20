@@ -227,6 +227,8 @@ export function NewReport({ refresh, me }) {
   const [pin, setPin] = useState(null),
     [location, setLocation] = useState("");
   const [description, setDescription] = useState("");
+  const [contact, setContact] = useState(""),
+    [showContact, setShowContact] = useState(false);
   const [photos, setPhotos] = useState([]),
     [analyzingPhotos, setAnalyzingPhotos] = useState(false),
     [photoAnalysis, setPhotoAnalysis] = useState(null),
@@ -246,6 +248,10 @@ export function NewReport({ refresh, me }) {
       const draft = JSON.parse(raw);
       if (draft.description) setDescription(String(draft.description));
       if (draft.location) setLocation(String(draft.location));
+      if (draft.contact) {
+        setContact(String(draft.contact));
+        setShowContact(true);
+      }
       if (draft.pin && Number.isFinite(draft.pin.lat) && Number.isFinite(draft.pin.lng)) {
         setPin(draft.pin);
       }
@@ -347,12 +353,14 @@ export function NewReport({ refresh, me }) {
     const form = new FormData(e.currentTarget);
     const cleanDesc = description.trim() || String(form.get("description") || "");
     const cleanLoc = location.trim() || String(form.get("location") || "").trim();
+    const cleanContact = contact.trim() || null;
     setErr("");
     setBusy(true);
     try {
       const r = await api("/reports", "POST", {
         description: cleanDesc,
         location: cleanLoc,
+        contact: cleanContact,
         pin,
         photos,
         public: form.has("public"),
@@ -531,6 +539,27 @@ export function NewReport({ refresh, me }) {
                 </ul>
               </div>
             </div>
+          )}
+        </div>
+        <div className="contact-toggle-block">
+          <button
+            type="button"
+            className="contact-toggle-btn"
+            aria-expanded={showContact}
+            onClick={() => setShowContact((v) => !v)}
+          >
+            Thông tin liên hệ
+          </button>
+          {showContact && (
+            <input
+              type="text"
+              name="contact"
+              aria-label="Thông tin liên hệ"
+              placeholder="Email hoặc số điện thoại"
+              maxLength={160}
+              value={contact}
+              onChange={(e) => setContact(e.target.value)}
+            />
           )}
         </div>
         <label className="check">

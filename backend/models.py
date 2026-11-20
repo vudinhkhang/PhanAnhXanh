@@ -87,11 +87,29 @@ class Submission(BaseModel):
     location: Annotated[
         str, StringConstraints(strip_whitespace=True, min_length=3, max_length=240)
     ]
+    contact: str | None = Field(default=None, max_length=160)
     photos: list[Annotated[str, Field(max_length=4_500_000)]] = Field(
         default_factory=list, max_length=3
     )
     public: bool = False
     ai_consent: bool = False
+
+    @field_validator("contact")
+    @classmethod
+    def check_contact(cls, value: str | None) -> str | None:
+        if value is None:
+            return None
+        cleaned = value.strip()
+        if not cleaned:
+            return None
+        is_email = bool(re.fullmatch(r"[^\s@]+@[^\s@]+\.[^\s@]+", cleaned))
+        digits = re.sub(r"\D", "", cleaned)
+        is_phone = bool(
+            re.fullmatch(r"\+?[0-9][0-9\s.-]{7,18}", cleaned) and 8 <= len(digits) <= 15
+        )
+        if not (is_email or is_phone):
+            raise ValueError("Thông tin liên hệ phải là email hoặc số điện thoại hợp lệ.")
+        return cleaned.lower() if is_email else cleaned
 
 
 class PhotoAnalysisRequest(BaseModel):

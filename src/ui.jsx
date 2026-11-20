@@ -342,6 +342,7 @@ export function IntakeNotice({ report, canResubmit = false }) {
                 JSON.stringify({
                   description: report.description || "",
                   location: report.location || "",
+                  contact: report.contact || "",
                   pin:
                     report.pin && !report.pin.approximate
                       ? { lat: report.pin.lat, lng: report.pin.lng }

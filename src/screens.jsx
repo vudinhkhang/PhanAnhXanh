@@ -1701,6 +1701,11 @@ export function Detail({ id, me, from }) {
                 <MapPin size={17} />
                 {r.location}
               </p>
+              {r.contact && (
+                <p className="detail-contact">
+                  <strong>Liên hệ:</strong> {r.contact}
+                </p>
+              )}
               {!admin && !(staff && r.intake_state === "review") && (
                 <ReportClassification report={r} />
               )}

@@ -672,8 +672,8 @@ def submit(data: Submission, request: Request, response: Response, user=Depends(
             "Hiện hệ thống chỉ tiếp nhận vị trí ghim trong phạm vi TP. Hồ Chí Minh.",
         )
     conn.execute(
-        """INSERT INTO reports(id,owner,guest_receipt,title,description,location,public,pin_lat,pin_lng,ward,ai_consent,intake_state)
-        VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,'pending')""",
+        """INSERT INTO reports(id,owner,guest_receipt,title,description,location,contact,public,pin_lat,pin_lng,ward,ai_consent,intake_state)
+        VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,'pending')""",
         (
             code,
             user["id"] if user else None,
@@ -681,6 +681,7 @@ def submit(data: Submission, request: Request, response: Response, user=Depends(
             title,
             data.description,
             data.location,
+            data.contact,
             data.public,
             pin.lat if pin else None,
             pin.lng if pin else None,
@@ -799,7 +800,7 @@ def detail(code: str, response: Response, user=Depends(session), conn=Depends(db
     )
     if precise:
         assessment = conn.execute(
-            "SELECT ai_summary,ai_source,intake_note,intake_photos,duplicate_of FROM reports WHERE id=%s",
+            "SELECT ai_summary,ai_source,intake_note,intake_photos,duplicate_of,contact FROM reports WHERE id=%s",
             (code,),
         ).fetchone()
         source = assessment.pop("duplicate_of")

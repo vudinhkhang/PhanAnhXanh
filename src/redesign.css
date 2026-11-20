@@ -2386,6 +2386,34 @@
   margin-top: 22px;
   justify-content: center;
 }
+.contact-toggle-block {
+  display: grid;
+  gap: 8px;
+}
+.contact-toggle-btn {
+  justify-self: start;
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: #f5f8f3;
+  color: var(--ink);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.contact-toggle-btn:hover {
+  border-color: var(--green);
+  background: #edf5ea;
+}
+.contact-toggle-block input {
+  width: 100%;
+}
+.detail-contact {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
 @media (max-width: 560px) {
   .before-after-grid {
     grid-template-columns: 1fr;

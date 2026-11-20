@@ -1,23 +1,23 @@
 [
   [
     "Rác sinh hoạt tập kết trên đất trống",
-    "Vị trí mô phỏng · Phường Chợ Quán, Thành phố Hồ Chí Minh",
+    "Đường An Dương Vương, Phường Chợ Quán, Thành phố Hồ Chí Minh",
     "waste",
     "processing",
-    "Nhiều bao rác và vật dụng bỏ đi nằm rải ra trên bãi đất sát khu dân cư. Ảnh và vị trí minh họa, không phải hồ sơ hiện trường.",
+    "Nhiều bao rác và vật dụng bỏ đi nằm rải ra trên bãi đất sát khu dân cư, gây mùi hôi và mất mỹ quan.",
     {
-      "lat": 10.76269,
-      "lng": 106.68251,
+      "lat": 10.7612,
+      "lng": 106.6812,
       "ward": "Phường Chợ Quán, Thành phố Hồ Chí Minh"
     },
     "/images/demo-reports/report-01.webp"
   ],
   [
     "Rác nổi tập trung trên mặt kênh",
-    "Vị trí mô phỏng · Phường Tân Phú, Thành phố Hồ Chí Minh",
+    "Kênh Tham Lương, Phường Tân Phú, Thành phố Hồ Chí Minh",
     "water",
     "received",
-    "Rác nổi dày trên mặt nước, gồm chai, túi nhựa và các vật dụng bỏ đi. Ảnh và vị trí minh họa, không phải hồ sơ hiện trường.",
+    "Rác nổi dày trên mặt nước gồm chai, túi nhựa và vật dụng bỏ đi, cần thu gom để khơi thông dòng chảy.",
     {
       "lat": 10.76273,
       "lng": 106.63264,
@@ -27,10 +27,10 @@
   ],
   [
     "Bụi phát tán dọc tuyến đường",
-    "Vị trí mô phỏng · Phường Bình Thạnh, Thành phố Hồ Chí Minh",
+    "Đường Điện Biên Phủ, Phường Bình Thạnh, Thành phố Hồ Chí Minh",
     "dust",
     "resolved",
-    "Bụi cuốn lên từ lề đường khi xe qua lại, giảm tầm nhìn. Ảnh và vị trí minh họa, không phải hồ sơ hiện trường.",
+    "Bụi cuốn lên từ lề đường khi xe qua lại làm giảm tầm nhìn và ảnh hưởng người đi đường.",
     {
       "lat": 10.81169,
       "lng": 106.70492,
@@ -40,10 +40,10 @@
   ],
   [
     "Rác nổi dưới chân cầu",
-    "Vị trí mô phỏng · Phường Xuân Hoà, Thành phố Hồ Chí Minh",
+    "Kênh Nhiêu Lộc - Thị Nghè, Phường Xuân Hoà, Thành phố Hồ Chí Minh",
     "water",
     "processing",
-    "Nhiều vỏ hộp và chai nhựa trôi dưới chân cầu, dồn thành từng cụm. Ảnh và vị trí minh họa, không phải hồ sơ hiện trường.",
+    "Nhiều vỏ hộp và chai nhựa trôi dưới chân cầu, dồn thành từng cụm dọc bờ kênh.",
     {
       "lat": 10.78932,
       "lng": 106.68413,
@@ -53,10 +53,10 @@
   ],
   [
     "Miệng thu nước bám nhiều cặn",
-    "Vị trí mô phỏng · Phường Sài Gòn, Thành phố Hồ Chí Minh",
+    "Đường Nguyễn Huệ, Phường Sài Gòn, Thành phố Hồ Chí Minh",
     "flood",
     "received",
-    "Cặn bám quanh song chắn miệng thu nước. Cần kiểm tra khả năng thoát nước. Ảnh và vị trí minh họa, không phải hồ sơ hiện trường.",
+    "Cặn và rác nhỏ bám quanh song chắn miệng thu nước ven đường, cần kiểm tra và nạo vét để đảm bảo thoát nước.",
     {
       "lat": 10.77995,
       "lng": 106.70249,
@@ -66,10 +66,10 @@
   ],
   [
     "Cây nghiêng về phía lối đi",
-    "Vị trí mô phỏng · Phường Tân Bình, Thành phố Hồ Chí Minh",
+    "Đường Cộng Hòa, Phường Tân Bình, Thành phố Hồ Chí Minh",
     "tree",
     "resolved",
-    "Một thân cây nghiêng nhiều về phía lòng đường, cần kiểm tra độ ổn định. Ảnh và vị trí minh họa, không phải hồ sơ hiện trường.",
+    "Một thân cây xanh ven đường nghiêng nhiều về phía lối đi bộ và lòng đường, cần kiểm tra độ an toàn.",
     {
       "lat": 10.7983,
       "lng": 106.64235,
@@ -79,10 +79,10 @@
   ],
   [
     "Mù bụi trên tuyến ra vào cầu",
-    "Vị trí mô phỏng · Phường Thạnh Mỹ Tây, Thành phố Hồ Chí Minh",
+    "Khu vực Cầu Sài Gòn, Phường Thạnh Mỹ Tây, Thành phố Hồ Chí Minh",
     "dust",
     "processing",
-    "Lớp bụi mờ phủ tuyến đường có nhiều xe máy, làm giảm tầm nhìn. Ảnh và vị trí minh họa, không phải hồ sơ hiện trường.",
+    "Lớp bụi mịn dày phủ trên tuyến đường có mật độ xe máy cao vào giờ cao điểm, gây giảm tầm nhìn.",
     {
       "lat": 10.8012,
       "lng": 106.7147,
@@ -92,10 +92,10 @@
   ],
   [
     "Khói đậm bốc lên từ khu nhà xưởng",
-    "Vị trí mô phỏng · Phường Phú Lâm, Thành phố Hồ Chí Minh",
+    "Khu vực Kinh Dương Vương, Phường Phú Lâm, Thành phố Hồ Chí Minh",
     "dust",
     "received",
-    "Nhiều cột khói đậm bốc lên từ phía các ống khói công nghiệp. Ảnh và vị trí minh họa, không phải hồ sơ hiện trường.",
+    "Nhiều cột khói sẫm màu bốc lên từ ống khói khu sản xuất, gây mùi khét cho khu dân cư lân cận.",
     {
       "lat": 10.7584,
       "lng": 106.6315,
@@ -104,11 +104,11 @@
     "/images/demo-reports/report-08.webp"
   ],
   [
-    "Ghi nhận hình ảnh cháy công trình",
-    "Vị trí mô phỏng · Phường Bến Thành, Thành phố Hồ Chí Minh",
+    "Sự cố cháy tại công trình ven đường",
+    "Đường Lê Lợi, Phường Bến Thành, Thành phố Hồ Chí Minh",
     "other",
     "resolved",
-    "Ảnh minh họa một sự cố cháy. Hồ sơ mẫu mô phỏng ghi nhận sau khi lực lượng chuyên trách đã hoàn tất xử lý. Ảnh và vị trí minh họa, không phải hồ sơ hiện trường.",
+    "Ghi nhận sự cố cháy kèm khói bốc cao tại mặt tiền công trình, lực lượng chức năng đã tiếp cận xử lý dứt điểm.",
     {
       "lat": 10.7687,
       "lng": 106.691,
@@ -118,10 +118,10 @@
   ],
   [
     "Tầm nhìn giảm trên khu đô thị",
-    "Vị trí mô phỏng · Phường Xuân Hoà, Thành phố Hồ Chí Minh",
+    "Đường Võ Thị Sáu, Phường Xuân Hoà, Thành phố Hồ Chí Minh",
     "dust",
     "received",
-    "Lớp mù thấp bao phủ các tòa nhà. Cần kiểm tra nguồn và chất lượng không khí. Ảnh và vị trí minh họa, không phải hồ sơ hiện trường.",
+    "Lớp sương mù và bụi mịn bao phủ khu vực nội đô từ sáng sớm, làm giảm tầm nhìn và chất lượng không khí.",
     {
       "lat": 10.7832,
       "lng": 106.6965,
@@ -131,10 +131,10 @@
   ],
   [
     "Rác nhựa dồn sát bờ nước",
-    "Vị trí mô phỏng · Phường Minh Phụng, Thành phố Hồ Chí Minh",
+    "Rạch Lò Gốm, Phường Minh Phụng, Thành phố Hồ Chí Minh",
     "water",
     "processing",
-    "Túi ni lông, vỏ hộp và các vật dụng bỏ đi tích tụ dọc mép nước. Ảnh và vị trí minh họa, không phải hồ sơ hiện trường.",
+    "Túi ni lông, vỏ hộp xốp và các vật dụng nhựa bỏ đi tích tụ dọc mép bờ kè.",
     {
       "lat": 10.7558,
       "lng": 106.6465,

@@ -16,7 +16,18 @@ from psycopg.errors import UniqueViolation
 from psycopg.types.json import Jsonb
 
 from . import admin_ai, classifier, intake, news
-from .db import ROOT, check_password, connect, hash_password, initialize
+from .db import (
+    ROOT,
+    check_password,
+    connect,
+    hash_password,
+    initialize,
+    load_history_photo_bytes,
+    load_photo_bytes,
+    load_report_photos,
+    save_history_photo,
+    save_report_photo,
+)
 from .gis import boundaries, ward_at
 from .intake import notify
 from .models import (
@@ -678,9 +689,10 @@ def submit(data: Submission, request: Request, response: Response, user=Depends(
         ),
     )
     for position, binary in enumerate(pictures):
+        file_path = save_report_photo(code, position, binary)
         conn.execute(
-            "INSERT INTO photos(report_id,position,data) VALUES(%s,%s,%s)",
-            (code, position, binary),
+            "INSERT INTO photos(report_id,position,file_path,data) VALUES(%s,%s,%s,NULL)",
+            (code, position, file_path),
         )
     conn.commit()
     if receipt:
@@ -815,26 +827,50 @@ def detail(code: str, response: Response, user=Depends(session), conn=Depends(db
     return row
 
 
-@app.get("/api/reports/{code}/photos/{position}")
-def photo(code: str, position: int, user=Depends(session), conn=Depends(db), pax_receipt: str | None = Cookie(default=None)):
-    authorize_case(conn, code, user, receipt=pax_receipt)
-    item = conn.execute(
-        "SELECT data FROM photos WHERE report_id=%s AND position=%s", (code, position)
-    ).fetchone()
-    if not item:
+def _webp_response(data: bytes | None) -> Response:
+    if not data:
         raise HTTPException(404, "Không tìm thấy ảnh.")
     return Response(
-        item["data"],
+        data,
         media_type="image/webp",
         headers={"Cache-Control": "private, no-store"},
     )
 
 
-def event(conn, code, status, note, user, photos=None):
-    conn.execute(
-        "INSERT INTO history(report_id,status,note,author,photos) VALUES(%s,%s,%s,%s,%s)",
-        (code, status, note, user["id"], Jsonb(photos or [])),
+@app.get("/api/reports/{code}/photos/{position}")
+def photo(code: str, position: int, user=Depends(session), conn=Depends(db), pax_receipt: str | None = Cookie(default=None)):
+    authorize_case(conn, code, user, receipt=pax_receipt)
+    item = conn.execute(
+        "SELECT file_path,data FROM photos WHERE report_id=%s AND position=%s", (code, position)
+    ).fetchone()
+    return _webp_response(load_photo_bytes(item))
+
+
+@app.get("/api/reports/{code}/history/{history_id}/photos/{position}")
+def history_photo(code: str, history_id: int, position: int, user=Depends(session), conn=Depends(db), pax_receipt: str | None = Cookie(default=None)):
+    authorize_case(conn, code, user, receipt=pax_receipt)
+    item = conn.execute(
+        "SELECT id FROM history WHERE id=%s AND report_id=%s", (history_id, code)
+    ).fetchone()
+    return _webp_response(
+        load_history_photo_bytes(code, history_id, position) if item else None
     )
+
+
+def event(conn, code, status, note, user, photos=None):
+    row = conn.execute(
+        "INSERT INTO history(report_id,status,note,author,photos) VALUES(%s,%s,%s,%s,%s) RETURNING id",
+        (code, status, note, user["id"], Jsonb([])),
+    ).fetchone()
+    if photos:
+        urls = [
+            save_history_photo(code, row["id"], position, binary)
+            for position, binary in enumerate(photos)
+        ]
+        conn.execute(
+            "UPDATE history SET photos=%s WHERE id=%s",
+            (Jsonb(urls), row["id"]),
+        )
 
 
 def assignment_officer(conn, assignee):
@@ -915,13 +951,11 @@ def update(code: str, data: Update, user=Depends(session), conn=Depends(db)):
         raise HTTPException(409, "Hồ sơ đã đóng. Quản trị viên có thể mở lại.")
     if data.status != "cancelled" and not data.confirmed_group:
         raise HTTPException(422, "Vui lòng chọn nhóm xác nhận.")
-    evidence_photos = []
-    if data.status != "cancelled" and data.photos:
-        for photo_str in data.photos:
-            binary = validate_photo(photo_str)
-            evidence_photos.append(
-                "data:image/webp;base64," + base64.b64encode(binary).decode("ascii")
-            )
+    evidence_photos = (
+        [validate_photo(photo_str) for photo_str in data.photos]
+        if data.status != "cancelled" and data.photos
+        else []
+    )
     claimant = user["id"] if user["role"] == "staff" else None
     conn.execute(
         """UPDATE reports SET status=%s,confirmed_group=COALESCE(%s,confirmed_group),priority=%s,
@@ -1042,12 +1076,7 @@ def reanalyze(code: str, user=Depends(session), conn=Depends(db)):
         raise HTTPException(
             403, "Chỉ quản trị viên được phân tích lại hồ sơ ngoài hàng chờ duyệt."
         )
-    pictures = [
-        p["data"]
-        for p in conn.execute(
-            "SELECT data FROM photos WHERE report_id=%s ORDER BY position", (code,)
-        ).fetchall()
-    ]
+    pictures = load_report_photos(conn, code)
     if not pictures and row["sample_photo"]:
         sample_path = ROOT / "public" / row["sample_photo"].lstrip("/")
         if sample_path.is_file():

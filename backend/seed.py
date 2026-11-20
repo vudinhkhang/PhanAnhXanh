@@ -3,15 +3,28 @@ import argparse
 import json
 from datetime import datetime, timedelta, timezone
 
-from .db import ROOT, connect, hash_password, initialize
+from .db import ROOT, connect, hash_password, initialize, save_report_photo
 
 ACCOUNTS = {
-    "admin": ("quantri@phananh.local", "Quản trị viên demo"),
-    "staff": ("canbo@phananh.local", "Cán bộ môi trường demo"),
-    "citizen": ("nguoidan@phananh.local", "Người dân demo"),
+    "admin": ("quantri@phananh.local", "Quản trị viên"),
+    "staff": ("canbo@phananh.local", "Cán bộ môi trường"),
+    "citizen": ("nguoidan@phananh.local", "Người dân"),
 }
 DEMO_PASSWORD = "Demo1234"
 HCM = timezone(timedelta(hours=7))
+REPORT_CODES = [
+    "PX-261101A4C8E1",
+    "PX-261103B7D2F4",
+    "PX-261105C9E1A3",
+    "PX-261107D4F6B8",
+    "PX-261109E2A5C7",
+    "PX-261111F8B3D9",
+    "PX-261112A6C4E2",
+    "PX-261114B1D9F5",
+    "PX-261116C3E7A8",
+    "PX-261118D5F2B6",
+    "PX-261120E9A1C4",
+]
 
 
 def demo_cases():
@@ -49,24 +62,31 @@ def install_cases(c, accounts, cases):
     c.execute("UPDATE users SET areas=%s WHERE id=%s", (areas, officer))
     today = datetime.now(HCM).replace(hour=0, minute=0, second=0, microsecond=0)
     for i, (title, location, group, status, desc, geo, photo) in enumerate(cases):
-        code = f"PX-MAU{i + 1:03}"
+        code = REPORT_CODES[i] if i < len(REPORT_CODES) else f"PX-261100000{i + 1:03X}"
         offset = round(i * (today.day - 1) / max(1, len(cases) - 1))
         created = today - timedelta(days=today.day - 1 - offset)
         row = c.execute(
             """INSERT INTO reports(id,owner,title,description,location,public,created_at,status,
                ai_group,ai_state,confirmed_group,assignee,sample_photo,pin_lat,pin_lng,ward)
-               VALUES(%s,%s,%s,%s,%s,true,%s,%s,%s,'done',%s,%s,%s,%s,%s,%s)
+               VALUES(%s,%s,%s,%s,%s,true,%s,%s,%s,'done',%s,%s,NULL,%s,%s,%s)
                ON CONFLICT DO NOTHING RETURNING id""",
             (code, accounts.get("citizen"), title, desc, location, created, status, group,
              group if status != "received" else None, officer if status != "received" else None,
-             photo, geo["lat"], geo["lng"], geo["ward"]),
+             geo["lat"], geo["lng"], geo["ward"]),
         ).fetchone()
         if not row:
             continue
+        photo_src = ROOT / "public" / photo.lstrip("/")
+        if photo_src.is_file():
+            file_path = save_report_photo(code, 0, photo_src.read_bytes())
+            c.execute(
+                "INSERT INTO photos(report_id,position,file_path,data) VALUES(%s,0,%s,NULL)",
+                (code, file_path),
+            )
         for state, note in (
-            ("received", "Hồ sơ mẫu được tiếp nhận."),
-            ("processing", "Cán bộ đang kiểm tra thông tin trong hồ sơ mẫu."),
-            ("resolved", "Đã mô phỏng hoàn tất xử lý hồ sơ."),
+            ("received", "Hệ thống đã tiếp nhận phản ánh của người dân."),
+            ("processing", "Cán bộ chuyên trách đang kiểm tra và xử lý tại hiện trường."),
+            ("resolved", "Đã hoàn tất xử lý và khắc phục sự cố tại hiện trường."),
         ):
             c.execute(
                 "INSERT INTO history(report_id,status,note,author,created_at) VALUES(%s,%s,%s,%s,%s)",

@@ -137,7 +137,7 @@ test("Admin phân khu vực cho cán bộ, Staff Dashboard và Bản đồ Goong
   ).toBeVisible();
 
   if (process.env.TEST_ADMIN_PASSWORD) {
-    const outRes = await page.request.post("/api/reports/PX-MAU003/update", {
+    const outRes = await page.request.post("/api/reports/PX-261105C9E1A3/update", {
       data: {
         status: "processing",
         confirmed_group: "dust",

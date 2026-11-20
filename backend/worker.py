@@ -1,7 +1,7 @@
 import logging
 
 from .classifier import analyze
-from .db import connect
+from .db import connect, load_report_photos
 from .intake import Assessment, apply_result, assess, notify
 
 log = logging.getLogger(__name__)
@@ -15,13 +15,7 @@ def process_next():
             ORDER BY created_at LIMIT 1 FOR UPDATE SKIP LOCKED""").fetchone()
         if not row:
             return False
-        pictures = [
-            item["data"]
-            for item in conn.execute(
-                "SELECT data FROM photos WHERE report_id=%s ORDER BY position",
-                (row["id"],),
-            ).fetchall()
-        ]
+        pictures = load_report_photos(conn, row["id"])
         if row["intake_state"] == "pending":
             try:
                 assessment = assess(row["description"], pictures, row["ai_consent"])

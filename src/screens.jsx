@@ -1691,10 +1691,7 @@ export function Detail({ id, me, from }) {
             <div className="panel detail">
               <div className="meta">
                 <span className="detail-id">
-                  <b>
-                    {r.id}
-                    {r.id.startsWith("PX-MAU") ? " · Hồ sơ minh họa" : ""}
-                  </b>
+                  <b>{r.id}</b>
                   <small>· Ngày gửi {dateText(r.created_at)}</small>
                 </span>
                 <Status value={r.status} intakeState={r.intake_state} />

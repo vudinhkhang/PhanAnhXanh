@@ -117,9 +117,6 @@ export function Cards({ reports, trackRef, editorial = false }) {
               </span>
             </div>
             <h3>{r.title}</h3>
-            {editorial && r.id.startsWith("PX-MAU") && (
-              <small className="report-sample">Hồ sơ minh họa</small>
-            )}
             <p>
               {!editorial && <MapPin size={15} />}
               {r.location}

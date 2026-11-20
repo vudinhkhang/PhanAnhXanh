@@ -39,8 +39,10 @@ ALTER TABLE reports DROP CONSTRAINT IF EXISTS reports_status_check;
 ALTER TABLE reports ADD CONSTRAINT reports_status_check CHECK (status IN ('received','processing','resolved','rejected','cancelled'));
 CREATE TABLE IF NOT EXISTS photos (
  report_id text NOT NULL REFERENCES reports(id), position integer NOT NULL CHECK (position BETWEEN 0 AND 2),
- data bytea NOT NULL, PRIMARY KEY (report_id,position)
+ data bytea, file_path text, PRIMARY KEY (report_id,position)
 );
+ALTER TABLE photos ADD COLUMN IF NOT EXISTS file_path text;
+ALTER TABLE photos ALTER COLUMN data DROP NOT NULL;
 CREATE TABLE IF NOT EXISTS history (
  id bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY, report_id text REFERENCES reports(id) NOT NULL,
  status text NOT NULL, note text NOT NULL, author bigint REFERENCES users(id), created_at timestamptz NOT NULL DEFAULT now()

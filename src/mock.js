@@ -41,10 +41,28 @@ function initial() {
     ],
     reports: seeds.map(
       ([title, location, group, status, description, geo, photo], i) => {
+        const reportIds = [
+          "PX-261101A4C8E1",
+          "PX-261103B7D2F4",
+          "PX-261105C9E1A3",
+          "PX-261107D4F6B8",
+          "PX-261109E2A5C7",
+          "PX-261111F8B3D9",
+          "PX-261112A6C4E2",
+          "PX-261114B1D9F5",
+          "PX-261116C3E7A8",
+          "PX-261118D5F2B6",
+          "PX-261120E9A1C4",
+        ];
+        const statusNotes = {
+          received: "Hệ thống đã tiếp nhận phản ánh của người dân.",
+          processing: "Cán bộ chuyên trách đang kiểm tra và xử lý tại hiện trường.",
+          resolved: "Đã hoàn tất xử lý và khắc phục sự cố tại hiện trường.",
+        };
         const day = 1 + Math.round(i * (currentDay - 1) / Math.max(1, seeds.length - 1));
         const created_at = new Date(today.slice(0, 8) + String(day).padStart(2, "0") + "T00:00:00+07:00").toISOString();
         return {
-        id: "PX-MAU" + String(i + 1).padStart(3, "0"),
+        id: reportIds[i] || "PX-" + String(i + 1).padStart(12, "0"),
         title,
         pin: { lat: geo.lat, lng: geo.lng },
         ward: geo.ward,
@@ -58,7 +76,7 @@ function initial() {
         priority: "normal",
         photos: [photo],
         created_at,
-        history: [{ status, note: "Trạng thái xử lý mô phỏng.", created_at }],
+        history: [{ status, note: statusNotes[status] || statusNotes.received, created_at }],
         public: true,
         assignee: status === "received" ? null : 1,
         owner: 3,
@@ -106,7 +124,6 @@ function demoDuplicate(reports, report, group) {
   return reports.find((item) => {
     if (
       item.id === report.id ||
-      item.id.startsWith("PX-MAU") ||
       !admitted(item) ||
       item.status === "resolved" ||
       (item.confirmed_group || item.ai_group) !== group
@@ -600,8 +617,7 @@ export async function mock(path, method, data) {
         if (
           !admitted(item) ||
           !["received", "processing"].includes(item.status) ||
-          !item.pin ||
-          item.id.startsWith("PX-MAU")
+          !item.pin
         )
           continue;
         const dLat = (lat - item.pin.lat) * 111195;

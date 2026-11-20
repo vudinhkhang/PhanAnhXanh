@@ -50,7 +50,6 @@ function initial() {
           "PX-261111F8B3D9",
           "PX-261112A6C4E2",
           "PX-261114B1D9F5",
-          "PX-261116C3E7A8",
           "PX-261118D5F2B6",
           "PX-261120E9A1C4",
         ];
